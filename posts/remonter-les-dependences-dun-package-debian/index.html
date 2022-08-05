@@ -1,0 +1,140 @@
+<!doctype html><html lang=en><head><title>remonter les dépendances d'un package debian</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=description content><link rel=stylesheet href=/css/theme.min.css></head><body><div id=content class=mx-auto><header class="container mt-sm-5 mt-4 mb-4 mt-xs-1"><div class=row><div class="col-sm-4 col-12 text-sm-right text-center pt-sm-4"><a href=/ class=text-decoration-none><img id=home-image class=rounded-circle src=/images/avatar.png></a></div><div class="col-sm-8 col-12 text-sm-left text-center"><h2 class="m-0 mb-2 mt-4"><a href=/ class=text-decoration-none>linkbeat</a></h2><p class="text-muted mb-1">kubectl run -it --image=linkbeat:v0.1.0 linkbeat</p><ul id=nav-links class="list-inline mb-2"></ul><ul id=nav-social class=list-inline><li class="list-inline-item mr-3"><a href=http://github.com/krptg0 target=_blank><i class="fab fa-github fa-1x text-muted"></i></a></li><li class="list-inline-item mr-3"><a href=https://www.linkedin.com/in/lgromb/ target=_blank><i class="fab fa-linkedin-in fa-1x text-muted"></i></a></li><li class="list-inline-item mr-3"><a href=https://twitter.com/krptg target=_blank><i class="fab fa-twitter fa-1x text-muted"></i></a></li><li class="list-inline-item mr-3"><a href=mailto:krptg0@gmail.com target=_blank><i class="fas fa-at fa-1x text-muted"></i></a></li></ul></div></div><hr></header><div class=container><div class="pl-sm-4 ml-sm-5"><p>En utilisant le paquet <code>apt-rdepends</code> (dispo dans les repos par défaut), on est à même de lister les dépendances d&rsquo;un package et de savoir si les-dites dépendances sont installées. Voyez plutôt :</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>$ apt-rdepends -p --state-follow<span style=color:#f92672>=</span>Installed --state-show<span style=color:#f92672>=</span>Installed postfix
+</span></span><span style=display:flex><span>$ Reading package lists... Done
+</span></span><span style=display:flex><span>Building dependency tree
+</span></span><span style=display:flex><span>Reading state information... Done
+</span></span><span style=display:flex><span>postfix
+</span></span><span style=display:flex><span>  Depends: adduser <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 3.48<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: cpio <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: debconf <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 0.5<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: dpkg <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 1.8.3<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: init-system-helpers <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 1.18~<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.14<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libdb5.3 <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libicu57 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 57.1-1~<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libsasl2-2 <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libssl1.1 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 1.1.0<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: lsb-base <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 3.0-6<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: netbase <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: ssl-cert <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>adduser
+</span></span><span style=display:flex><span>  Depends: debconf <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 0.5<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: passwd <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>debconf
+</span></span><span style=display:flex><span>  PreDepends: perl-base <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 5.20.1-3~<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>perl-base
+</span></span><span style=display:flex><span>  PreDepends: dpkg <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 1.17.17<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  PreDepends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.23<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>dpkg
+</span></span><span style=display:flex><span>  Depends: tar <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 1.28-1<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  PreDepends: libbz2-1.0 <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  PreDepends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.14<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  PreDepends: liblzma5 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 5.2.2<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  PreDepends: libselinux1 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.3<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  PreDepends: zlib1g <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 1:1.1.4<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>tar
+</span></span><span style=display:flex><span>  PreDepends: libacl1 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.2.51-8<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  PreDepends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.17<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  PreDepends: libselinux1 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 1.32<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>libacl1
+</span></span><span style=display:flex><span>  Depends: libattr1 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 1:2.4.46-8<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.14<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>libattr1
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.4<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>libc6
+</span></span><span style=display:flex><span>  Depends: libgcc1 <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>libgcc1
+</span></span><span style=display:flex><span>  Depends: gcc-6-base <span style=color:#f92672>(=</span> 6.3.0-18+deb9u1<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.14<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>gcc-6-base
+</span></span><span style=display:flex><span>libselinux1
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.14<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libpcre3 <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>libpcre3
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.14<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  PreDepends: multiarch-support <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>multiarch-support
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.3.6-2<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>libbz2-1.0
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.4<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>liblzma5
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.17<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>zlib1g
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.14<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>passwd
+</span></span><span style=display:flex><span>  Depends: libaudit1 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 1:2.2.1<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.14<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libpam-modules <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libpam0g <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 0.99.7.1<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libselinux1 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 1.32<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libsemanage1 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.0.3<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>libaudit1
+</span></span><span style=display:flex><span>  Depends: libaudit-common <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 1:2.6.7-2<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.14<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libcap-ng0 <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>libaudit-common
+</span></span><span style=display:flex><span>libcap-ng0
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.8<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>libpam-modules
+</span></span><span style=display:flex><span>  PreDepends: debconf <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 0.5<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  PreDepends: libaudit1 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 1:2.2.1<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  PreDepends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.15<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  PreDepends: libdb5.3 <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  PreDepends: libpam-modules-bin <span style=color:#f92672>(=</span> 1.1.8-3.6<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  PreDepends: libpam0g <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 1.1.3-2<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  PreDepends: libselinux1 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.1.9<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>libdb5.3
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.17<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>libpam-modules-bin
+</span></span><span style=display:flex><span>  Depends: libaudit1 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 1:2.2.1<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.14<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libpam0g <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 0.99.7.1<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libselinux1 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 1.32<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>libpam0g
+</span></span><span style=display:flex><span>  Depends: debconf <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 0.5<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libaudit1 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 1:2.2.1<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.14<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>libsemanage1
+</span></span><span style=display:flex><span>  Depends: libaudit1 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 1:2.2.1<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libbz2-1.0 <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.14<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libselinux1 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.6<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libsemanage-common <span style=color:#f92672>(=</span> 2.6-2<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libsepol1 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.6<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libustr-1.0-1 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 1.0.4<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>libsemanage-common
+</span></span><span style=display:flex><span>libsepol1
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.14<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>libustr-1.0-1
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.14<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>cpio
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.17<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>init-system-helpers
+</span></span><span style=display:flex><span>  Depends: perl-base <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 5.20.1-3<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>libicu57
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.14<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libgcc1 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 1:3.0<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libstdc++6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 5.2<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>libstdc++6
+</span></span><span style=display:flex><span>  Depends: gcc-6-base <span style=color:#f92672>(=</span> 6.3.0-18+deb9u1<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.18<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libgcc1 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 1:4.2<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>libsasl2-2
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.15<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libsasl2-modules-db <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.1.27~101-g0780600+dfsg-3+deb9u1<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>libsasl2-modules-db
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.14<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libdb5.3 <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>libssl1.1
+</span></span><span style=display:flex><span>  Depends: debconf <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 0.5<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.17<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>lsb-base
+</span></span><span style=display:flex><span>netbase
+</span></span><span style=display:flex><span>ssl-cert
+</span></span><span style=display:flex><span>  Depends: adduser <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: debconf <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 0.5<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: openssl <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 0.9.8g-9<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>openssl
+</span></span><span style=display:flex><span>  Depends: libc6 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 2.15<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>  Depends: libssl1.1 <span style=color:#f92672>(</span>&gt;<span style=color:#f92672>=</span> 1.1.0<span style=color:#f92672>)</span> <span style=color:#f92672>[</span>Installed<span style=color:#f92672>]</span>
+</span></span></code></pre></div><p>Il n&rsquo;y a plus qu&rsquo;à faire la liste !</p></div></div></div><footer class="text-center pb-1"><small class=text-muted>© 2022, Louis Gromb<br>Powered by <a href=https://gohugo.io/ target=_blank>Hugo</a>
+and <a href=https://github.com/austingebauer/devise target=_blank>Devise</a></small></footer></body></html>
