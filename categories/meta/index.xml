@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>meta on linkbeat</title><link>https://krptg0.github.io/categories/meta/</link><description>Recent content in meta on linkbeat</description><generator>Hugo -- gohugo.io</generator><language>fr-fr</language><copyright>© 2022, Louis Gromb</copyright><lastBuildDate>Tue, 14 Sep 2021 15:31:01 +0000</lastBuildDate><atom:link href="https://krptg0.github.io/categories/meta/index.xml" rel="self" type="application/rss+xml"/><item><title>what's inside</title><link>https://krptg0.github.io/posts/whats-inside/</link><pubDate>Tue, 14 Sep 2021 15:31:01 +0000</pubDate><guid>https://krptg0.github.io/posts/whats-inside/</guid><description>domain for my homelab
-current project : using terraform to generate a kube cluster (1+2 nodes), using Proxmox API and migrate the following docker-compose stack to it.
-actually docker-compose but slowly migrating to kube
-medias :emby (self-hosted netflix), sonarr (tv series indexer), radarr (movies indexer), bazarr (subtitles indexer), prowlarr (indexer indexer), navidrome (self-hosted winamp revival), qbitorrent (speaks for itself), ghost (blog platform)
-system &amp;amp; network :diun (docker images management), gitea (self-hosted github), openvpn (self-hosted VPN), pihole (LAN-wide adblocker), traefik (HTTPS ingress for the whole platform)</description></item></channel></rss>
+running on a single k3s node
+medias : emby, sonarr, radarr, bazarr, prowlarr, navidrome, qbitorrent
+system &amp;amp; network : longhorn CSI, ingress-nginx, cert-manager
+metrics &amp;amp; monitoring : fbx_telegraf, influxdb, node_exporter, snmp_exporter, pihole_exporter, prometheus, grafana, alertmanager</description></item></channel></rss>
